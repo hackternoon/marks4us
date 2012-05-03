@@ -15,10 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: j4_development
+  database: m4d
   pool: 5
-  username: j4
-  password:
+  username: oracle
+  password: oracle
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -41,15 +41,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: j4_test
+  database: m4t
   pool: 5
-  username: j4
-  password:
+  username: oracle
+  password: oracle
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: j4_production
+  database: m4p
   pool: 5
-  username: j4
-  password:
+  username: oracle
+  password: oracle
