@@ -64,4 +64,29 @@ J4::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  if ENV["LAPTOP"] == 'true'
+    # I like to run Thin-webserver on my laptop.
+    # So I need to config-rails to serve static assets:
+    config.serve_static_assets = true
+  else
+    # Disable Rails's static asset server on Heroku:
+    config.serve_static_assets = false
+  end
+
+  # bikle
+  config.action_mailer.default_url_options = {:host => 'm41.herokuapp.com',:protocol => 'https'}
+ 
+  ActionMailer::Base.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address        => 'smtp.gmail.com',
+    :port           => 587,
+    :domain         => 'm41.herokuapp.com',
+    :authentication => :plain,
+    :user_name      => ENV["GMAIL_USER"],
+    :password       => ENV["GMAIL_PASSWORD"]
+  }
+
 end
+
+
