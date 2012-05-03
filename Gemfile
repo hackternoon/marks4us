@@ -1,38 +1,39 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails',      '3.2.3'
+gem 'pg',         '~> 0.13.1'
+gem 'jquery-rails', '1.0.19'
+gem 'thin',       '~> 1.3.1'
+gem 'foreman',    '~> 0.39.0'
+gem 'haml',       '~> 3.1.4'
+gem 'haml-rails', '~> 0.3.4'
+gem 'slim',       '~> 1.1.0'
+gem 'devise',     '~> 2.0.4'
+gem 'kaminari',   '= 0.13.0'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'pg'
-
+group :test, :development do
+  gem 'ruby-debug19', '~> 0.11.6',:require => 'ruby-debug'
+  # Pretty printed test output
+  gem 'turn', '0.9.3', :require => false
+  gem 'minitest',    '~>2.11.2'
+  gem 'haml2slim',   '~> 0.4.6'
+  gem 'rspec-rails', '~> 2.8.1'
+  gem 'capybara',    '~> 1.1.2'
+  gem 'database_cleaner', '~> 0.7.1'
+  gem 'cucumber',         '~> 1.1.9'
+  gem 'cucumber-rails',   '~> 1.3.0'
+  gem 'heroku',           '~> 2.20.1'
+  gem 'hpricot',          '= 0.8.6'
+  gem 'factory_girl_rails','= 1.7.0'
+  gem 'sqlite3'           ,'= 1.3.3'
+  gem 'taps'              ,'= 0.3.23'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platform => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',     '~> 3.2.3'
+  gem 'coffee-rails',   '~> 3.2.1'
+  gem 'uglifier',       '>= 1.0.3'
+  gem 'bourbon',        '~> 1.4.0'
 end
-
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
