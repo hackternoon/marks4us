@@ -1,0 +1,45 @@
+!!! 5
+%html
+  %head
+    %title marks4.us
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %table
+      %tr
+        %td
+          %header
+            %a(href="#{sslhost}/")
+              %h1.bg_white.mongo_green.has_brown_border marks4.us
+        %td
+          -if alert.present?
+            %p.alert.has_brown_border=alert
+          -if notice.present?
+            %p.notice.has_brown_border=notice
+
+      %tr
+        %td.vertical_align_top.width200
+          - if current_user.present?
+            You are logged in as:
+            %a(href="#{sslhost}#{edit_user_password_path('user')}")
+              =truncate(current_user.email, :length => 15)
+          - else
+            You are logged in as: 
+            %span.mongo_brown.bold Guest
+            %hr/
+
+          %nav.mongo_brown.bold.has_green_border.padding10.float_left.margin10.blocks_others
+            %a(href="#{sslhost}#{new_session_path('user')}") Sign In
+            %a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
+            %a(href="#{sslhost}#{destroy_user_session_path}") Sign Out
+
+        %td
+          %article.mongo_brown.bold.has_green_border.padding10.float_left.margin10.mongo_bgc
+            =yield
+      %tr
+        %td.has_brown_border(colspan="2")
+          %footer
+            %a.mongo_green(href="#{sslhost}/") marks4.us 
+            %span.black 2012
+
