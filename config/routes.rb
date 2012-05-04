@@ -1,7 +1,13 @@
 J4::Application.routes.draw do
+
   resources :usrs
 
-  devise_for :users
+  devise_for :users, :skip => [:sessions]
+  devise_scope :user do
+    get "users/sign_in", :to => "usr_sessions#new", :as => 'new_user_session'
+    post "users/sign_in", :to => "usr_sessions#create", :as => 'user_session'
+    get "users/sign_out", :to => "usr_sessions#destroy", :as => 'destroy_user_session'
+  end
 
   get "home/index"
   root :to => "home#index"
