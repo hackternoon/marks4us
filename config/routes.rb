@@ -1,4 +1,6 @@
 J4::Application.routes.draw do
+  resources :usrs
+
   devise_for :users
 
   get "home/index"
