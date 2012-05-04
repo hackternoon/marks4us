@@ -1,0 +1,11 @@
+
+- if ENV['RAILS_ENV'] == 'production'
+  / nada
+- else
+  %ul
+    - User.all.each do |usr|
+      %li 
+        - debugger
+        #{confirm_email_url(:confirmation_token => usr.confirmation_token)}
+        %br/
+        is for: #{usr.email}

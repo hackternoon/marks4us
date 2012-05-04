@@ -23,7 +23,7 @@
             %a(href="#{sslhost}#{edit_user_password_path('user')}")
               =truncate(current_user.email, :length => 15)
           - else
-            %span.bold Guest
+            %span.bold.dark_green Guest
             %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
