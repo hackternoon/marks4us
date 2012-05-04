@@ -6,7 +6,6 @@ class UsrSessionsController < Devise::SessionsController
   def create
 debugger
     super
-    redirect_to :marks_path
   end
 
   def destroy

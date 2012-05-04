@@ -5,7 +5,6 @@ en:
   hello: "Hello world"
 
   devise:
-    user:
-      usr_sessions:
-        signed_in: 'Signed in successfully.'
-        signed_out: 'Signed out successfully.'
+    usr_sessions:
+      signed_in: 'Signed in successfully.'
+      signed_out: 'Signed out successfully.'
