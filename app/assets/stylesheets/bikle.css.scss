@@ -1,0 +1,35 @@
+/* app/assets/stylesheets/bikle.css.scss */
+@import "bourbon";
+.black_border {border: 1px solid black;}
+.vertical_align_top {vertical-align: top;}
+.width160  {width:  160px;}
+.width200  {width:  200px;}
+.bold {font-weight:bold;}
+.padding10 {padding: 10px;}
+.margin10  {margin:  10px;}
+.allows_others_inline {display: inline;}
+.blocks_others {display: block;}
+.float_left {float:left;}
+.alert {color: #880000; background-color: #EEeeEE; font-size: 20px; font-weight:bold;}
+.notice {color: black; background-color: #EEeeEE; font-size: 20px; font-weight:bold;}
+
+a {
+  color: #0000FF;
+  &:visited {color: #0000FF;}
+  &:hover {color: black;background-color: white;}
+}
+
+nav>a {
+  display: block;
+  color: #0000FF;
+  margin: 10px;
+  &:visited {color: #0000FF;}
+  &:hover {color: black;background-color: white;}
+}
+
+img {
+	@include border-radius(15px 15px 15px 15px);
+	margin: .5em 0;}
+img.img_not_rounded {@include border-radius(0px);}
+
+.bold30px {font-size: 30px; font-weight:bold;}
