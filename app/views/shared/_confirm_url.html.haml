@@ -4,8 +4,8 @@
 - else
   %ul
     - User.all.each do |usr|
-      %li 
-        - debugger
-        #{confirm_email_url(:confirmation_token => usr.confirmation_token)}
+      %li
+        - confurl = "http://localhost:3000/users/confirmation?confirmation_token=#{usr.confirmation_token}"
+        %a(href=confurl) #{confurl}
         %br/
         is for: #{usr.email}
