@@ -240,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (= 3.0.1)
   bourbon (~> 1.4.0)
   capybara (~> 1.1.2)
   coffee-rails (~> 3.2.1)
