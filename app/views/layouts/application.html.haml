@@ -29,6 +29,8 @@
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
             %a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
             %a(href="#{sslhost}#{destroy_user_session_path}") Sign Out
+            %hr/
+            %a(href="#{sslhost}/mrks") Marks For Us
         %td
           %article.padding10.float_left.margin10.black_border
             =yield
