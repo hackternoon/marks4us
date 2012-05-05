@@ -19,11 +19,11 @@
         %td.vertical_align_top.width160
           You are logged in as:
           %br/
-          - if session[:usr].present?
-            %a(href="#{sslhost}#{edit_user_password_path('user')}")
-              =truncate(session[:usr], :length => 15)
-          - else
+          - if usr_disp == 'Guest'
             %span.bold.dark_green Guest
+          - else
+            %a(href="#{sslhost}#{edit_user_password_path('user')}")
+              =truncate(usr_disp, :length => 15)
           %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In

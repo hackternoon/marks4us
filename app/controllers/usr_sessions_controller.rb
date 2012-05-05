@@ -4,7 +4,6 @@ class UsrSessionsController < Devise::SessionsController
   end
 
   def create
-debugger
     # See if person wants to authenticate a Usr-object:
     @usr = Usr.find_by_name(params[:user][:email]).try(:authenticate, params[:user][:password])
     if @usr.present?
@@ -15,6 +14,8 @@ debugger
       # I'll ask Devise to do the work:
       super
       if current_user.present?
+        # The layout wants to know who is logged in.
+        # I supply either a name or an e-mail via session.
         session[:usr] = current_user.email
       else
         session[:usr] = nil
@@ -23,10 +24,9 @@ debugger
   end
 
   def destroy
-debugger
-    # If the person has a current_user object, I'll let Devise destroy the session:
-    super if current_user.present?
     # If the person has a session[:usr], I set it to nil.
     session[:usr] = nil
+    # If the person has a current_user object, I'll let Devise destroy the session:
+    super if current_user.present?
   end
 end

@@ -3,9 +3,9 @@
   / nada
 - else
   %ul
-    - User.all.each do |usr|
+    - User.where("confirmation_token IS NOT NULL").each do |user|
       %li
-        - confurl = "http://localhost:3000/users/confirmation?confirmation_token=#{usr.confirmation_token}"
+        - confurl = "http://localhost:3000/users/confirmation?confirmation_token=#{user.confirmation_token}"
         %a(href=confurl) #{confurl}
         %br/
-        is for: #{usr.email}
+        is for: #{user.email}

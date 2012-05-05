@@ -26,5 +26,19 @@ module ApplicationHelper
       ""
     end
   end # def sslhost
+
+  # The layout wants to know who is logged in.
+  # I look in two places.
+  def usr_disp
+    case
+    when current_user.present?
+      current_user.email
+    when session[:usr].present?
+      session[:usr]
+    else
+      'Guest'
+    end
+  end # def usr_disp
+
 end
 
