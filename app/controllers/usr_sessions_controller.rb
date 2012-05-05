@@ -18,14 +18,14 @@ class UsrSessionsController < Devise::SessionsController
         # I supply either a name or an e-mail via session.
         session[:usr] = current_user.email
       else
-        session[:usr] = nil
+        session[:usr] = 'Guest'
       end
     end
   end
 
   def destroy
-    # If the person has a session[:usr], I set it to nil.
-    session[:usr] = nil
+    # If the person has a session[:usr], I set it to 'Guest'
+    session[:usr] = 'Guest'
     # If the person has a current_user object, I'll let Devise destroy the session:
     super if current_user.present?
   end

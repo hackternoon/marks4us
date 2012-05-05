@@ -22,12 +22,19 @@ class MrksController < ApplicationController
   # POST /mrks
   def create
     @mrk = Mrk.new(params[:mrk])
+    case
+    when current_user.present?
+      @mrk.user_id = current_user.id
+    else
+      @usr = Usr.find_by_name session[:usr]
+      @mrk.usr_id = @usr.id unless @usr.blank?
+    end
 
     respond_to do |format|
       if @mrk.save
         format.html { redirect_to @mrk, notice: 'Mrk was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: '@mrk.save failed. It is not your fault. Good Luck.' }
       end
     end
   end
@@ -49,6 +56,6 @@ class MrksController < ApplicationController
   def destroy
     @mrk = Mrk.find(params[:id])
     @mrk.destroy
-    redirect_to mrks_url }
+    redirect_to mrks_url
   end
 end
