@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Uurl:
+  = @mrk.uurl
+%p
+  %b Usr:
+  = @mrk.usr_id
+%p
+  %b User:
+  = @mrk.user_id
+%p
+  %b Tag1:
+  = @mrk.tag1
+%p
+  %b Tag2:
+  = @mrk.tag2
+%p
+  %b Tag3:
+  = @mrk.tag3
+%p
+  %b Note:
+  = @mrk.note
+
+= link_to 'Edit', edit_mrk_path(@mrk)
+\|
+= link_to 'Back', mrks_path

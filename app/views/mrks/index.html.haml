@@ -1,0 +1,31 @@
+%h1 Listing mrks
+
+%table
+  %tr
+    %th Uurl
+    %th Usr
+    %th User
+    %th Tag1
+    %th Tag2
+    %th Tag3
+    %th Note
+    %th
+    %th
+    %th
+
+  - @mrks.each do |mrk|
+    %tr
+      %td= mrk.uurl
+      %td= mrk.usr_id
+      %td= mrk.user_id
+      %td= mrk.tag1
+      %td= mrk.tag2
+      %td= mrk.tag3
+      %td= mrk.note
+      %td= link_to 'Show', mrk
+      %td= link_to 'Edit', edit_mrk_path(mrk)
+      %td= link_to 'Destroy', mrk, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Mrk', new_mrk_path

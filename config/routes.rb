@@ -1,5 +1,7 @@
 J4::Application.routes.draw do
 
+  resources :mrks
+
   resources :usrs
 
   devise_for :users, :skip => [:sessions]
