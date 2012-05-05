@@ -19,12 +19,12 @@
         %td.vertical_align_top.width160
           You are logged in as:
           %br/
-          - if current_user.present?
+          - if session[:usr].present?
             %a(href="#{sslhost}#{edit_user_password_path('user')}")
-              =truncate(current_user.email, :length => 15)
+              =truncate(session[:usr], :length => 15)
           - else
             %span.bold.dark_green Guest
-            %hr/
+          %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
             %a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
