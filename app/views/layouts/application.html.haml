@@ -8,13 +8,16 @@
   %body
     %table
       %tr#tr1
-        %td.black_border(colspan="2")
+        %td(colspan="2")
           %header
-            %a.bold30px(href="#{sslhost}/") marks4.us
-          -if alert.present?
-            .alert.black_border=alert
-          -if notice.present?
-            .notice.black_border=notice
+            %fieldset
+              %legend
+                %a.bold30px(href="#{sslhost}/") marks4.us
+              Our (and YOUR) Database full of bookmarks
+              -if alert.present?
+                .alert.black_border=alert
+              -if notice.present?
+                .notice.black_border=notice
       %tr#tr2
         %td.vertical_align_top.width160
           You are logged in as:
@@ -31,7 +34,7 @@
             %a(href="#{sslhost}#{destroy_user_session_path}") Sign Out
             %hr/
             %a(href="#{sslhost}/mrks") Marks For Us
-        %td
+        %td.vertical_align_top
           %article.padding10.float_left.margin10
             =yield
       %tr#tr3
