@@ -40,5 +40,15 @@ module ApplicationHelper
     end
   end # def usr_disp
 
+  # I use this method to transform a string into an HTML anchor:
+  def linkized(uurl)
+    myurl = URI.parse uurl
+    if (myurl.scheme.present?)
+      return "<a href='#{uurl}' target='u'>#{uurl}</a>"
+    else
+      uurl
+    end
+  end # def linkized(uurl)
+
 end
 

@@ -1,10 +1,10 @@
-%h1 Listing mrks
+%h1 Book Marks!
 
 %table
   %tr
-    %th Uurl
-    %th Usr
-    %th User
+    %th The URL
+    %th Temp Owner
+    %th Perm Owner
     %th Tag1
     %th Tag2
     %th Tag3
@@ -15,7 +15,11 @@
 
   - @mrks.each do |mrk|
     %tr
-      %td= mrk.uurl
+      %td
+        - if(URI.parse(mrk.uurl).scheme.present?)
+          %a(href='#{mrk.uurl}' target='u') #{mrk.uurl}
+        - else
+          mrk.uurl
       %td= mrk.usr_id
       %td= mrk.user_id
       %td= mrk.tag1
