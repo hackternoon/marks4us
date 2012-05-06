@@ -1,10 +1,8 @@
-<h2>Permanent Account Sign up</h2>
-
+<legend><h2>Permanent Account Sign up</h2></legend>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <fieldset>
-    <legend>Enter User Details</legend>
   (PROTECT your identity. Provide a "throwaway" address, NOT your primary e-mail.)
   <br />
 
@@ -31,12 +29,12 @@
 <% end %>
 
 <p>
-If you don't want to provide your E-Mail address, we are okay with that.
+If you don't want to provide an E-Mail address, we are okay with that.
 <br />
 We allow you to create a temporary account which will evaporate 2 months after your last login.
 </p>
 
-<h2>Temporary (2 Month) Account Sign up</h2>
+<h2>OR ... Temporary (2 Month) Account Sign up</h2>
 <% @usr = Usr.new %>
 <%= form_for @usr do |f| %>
   <% if @usr.errors.any? %>
@@ -52,7 +50,6 @@ We allow you to create a temporary account which will evaporate 2 months after y
   <% end %>
 
   <fieldset>
-    <legend>Enter User Details</legend>
 
   <div>
     <%= f.label :name %> (NOT E-Mail):
