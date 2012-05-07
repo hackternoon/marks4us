@@ -15,12 +15,12 @@
 
   - @mrks.each do |mrk|
     %tr
+      %td=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
       %td
-        - if(URI.parse(mrk.uurl).scheme.present?)
-          %a(href='#{mrk.uurl}' target='u') #{mrk.uurl}
+        - if mrk.owner_h[:owner_type] == :user
+          %a(href='#{user_path(mrk.owner_h[:owner_id])}') #{mrk.owner_h[:name_or_email]}
         - else
-          mrk.uurl
-      %td= mrk.owner_h[:name_or_email]
+          %a(href='#{usr_path(mrk.owner_h[:owner_id])}') #{mrk.owner_h[:name_or_email]}
       %td= mrk.tag1
       %td= mrk.tag2
       %td= mrk.tag3

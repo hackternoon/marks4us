@@ -1,5 +1,9 @@
 J4::Application.routes.draw do
 
+  get "users/index"
+
+  match "users/show/:user_id" => 'users#show', :as => :user, :via => :get
+
   resources :mrks
 
   resources :usrs

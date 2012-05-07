@@ -1,0 +1,5 @@
+
+- if(URI.parse(mrk.uurl).scheme.present?)
+  %a(href='#{mrk.uurl}' target='u') #{mrk.uurl}
+- else
+  mrk.uurl

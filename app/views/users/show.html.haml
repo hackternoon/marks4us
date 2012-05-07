@@ -1,9 +1,9 @@
-%legend= @usr.name
-This is a 2 Month Account.
+%legend= @user.email
+This is a permanent Account.
 %br/
 %br/
 
 It created these bookmarks:
 %ul
-  - @usr.mrks.each do |mrk|
+  - @user.mrks.each do |mrk|
     %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
