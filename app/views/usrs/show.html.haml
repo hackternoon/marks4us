@@ -1,5 +1,10 @@
 %legend= @usr.name
-This is a 2 Month Account.
+-if @usr.name == 'Guest'
+  This is a 
+  %a(href="/#account_types") Guest Account.
+-else
+  This is a 
+  %a(href="/#account_types") 2 Month Account.
 %br/
 %br/
 
