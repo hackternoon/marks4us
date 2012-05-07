@@ -32,11 +32,11 @@ module ApplicationHelper
   def usr_disp
     case
     when current_user.present?
-      {:acct_type => "Permanent Account:", :name_or_email => current_user.email }
+      {:acct_type => "Permanent Account", :name_or_email => current_user.email }
     when session[:usr].present?
-      {:acct_type => "2 Month Account:", :name_or_email => session[:usr] }
+      {:acct_type => "2 Month Account", :name_or_email => session[:usr] }
     else
-      {:acct_type => "2 Month Account:", :name_or_email => 'Guest' }
+      {:acct_type => "2 Month Account", :name_or_email => 'Guest' }
     end
   end # def usr_disp
 

@@ -25,7 +25,10 @@
           - if usr_disp[:name_or_email] == 'Guest'
             %span.bold.dark_green Guest
           - else
-            #{usr_disp[:acct_type]}
+            %a(href="/#account_types")
+              #{usr_disp[:acct_type]}
+            %br/
+            You:
             %br/
             %a(href="#{sslhost}#{edit_user_password_path('user')}")
               =truncate(usr_disp[:name_or_email], :length => 15)
@@ -35,7 +38,7 @@
             %a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
             %a(href="#{sslhost}#{destroy_user_session_path}") Sign Out
             %hr/
-            %a(href="#{sslhost}/mrks") Marks For Us
+            %a(href="#{sslhost}/mrks") Bookmarks!
         %td.vertical_align_top
           %article.padding10.float_left.margin10
             %fieldset
