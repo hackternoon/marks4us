@@ -32,23 +32,13 @@ module ApplicationHelper
   def usr_disp
     case
     when current_user.present?
-      current_user.email
+      {:acct_type => "Permanent Account:", :name_or_email => current_user.email }
     when session[:usr].present?
-      session[:usr]
+      {:acct_type => "2 Month Account:", :name_or_email => session[:usr] }
     else
-      'Guest'
+      {:acct_type => "2 Month Account:", :name_or_email => 'Guest' }
     end
   end # def usr_disp
-
-  # I use this method to transform a string into an HTML anchor:
-  def linkized(uurl)
-    myurl = URI.parse uurl
-    if (myurl.scheme.present?)
-      return "<a href='#{uurl}' target='u'>#{uurl}</a>"
-    else
-      uurl
-    end
-  end # def linkized(uurl)
 
 end
 

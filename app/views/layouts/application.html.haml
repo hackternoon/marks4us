@@ -20,13 +20,15 @@
                 .notice.black_border=notice
       %tr#tr2
         %td.vertical_align_top.width160
-          You are logged in as:
+          You are logged in as a
           %br/
-          - if usr_disp == 'Guest'
+          - if usr_disp[:name_or_email] == 'Guest'
             %span.bold.dark_green Guest
           - else
+            #{usr_disp[:acct_type]}
+            %br/
             %a(href="#{sslhost}#{edit_user_password_path('user')}")
-              =truncate(usr_disp, :length => 15)
+              =truncate(usr_disp[:name_or_email], :length => 15)
           %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
