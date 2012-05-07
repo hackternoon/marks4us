@@ -22,13 +22,10 @@ class UsrsController < ApplicationController
   # POST /usrs
   def create
     @usr = Usr.new(params[:usr])
-
-    respond_to do |format|
-      if @usr.save
-        redirect_to @usr, notice: 'Usr was successfully created.'
-      else
-        render action: "new"
-      end
+    if @usr.save
+      redirect_to @usr, notice: 'Success! Now, memorize your password. Then go Sign In.'
+    else
+      render action: "new"
     end
   end
 

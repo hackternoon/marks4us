@@ -1,5 +1,9 @@
 %h1 New usr
 
 = render 'form'
+%hr/
+Try again:
+%br/
+%br/
 
-= link_to 'Back', usrs_path
+%a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
