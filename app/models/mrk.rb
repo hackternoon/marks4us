@@ -6,6 +6,21 @@ class Mrk < ActiveRecord::Base
   # Callbacks after Associations
   before_save :check_owner,:check_url_scheme
 
+  # A mrk can be owned by a user or a usr.
+  # I look for both and return one.
+  def owner_h
+    case
+    when self.user_id.present?
+      {:owner_id => self.user_id, :owner_type => :user, :name_or_email => self.user.email }
+    when self.usr_id.present?
+      {:owner_id => self.usr_id, :owner_type => :usr, :name_or_email => self.usr.name }
+    else
+      {:owner_id => self.usr_id, :owner_type => :usr, :name_or_email => 'Guest' }
+    end
+  end
+
+  private
+
   # I ensure that each @mrk belongs to at least usr 1 which should be Guest.
   def check_owner
     if(self.usr_id.blank? and self.user_id.blank?)

@@ -4,8 +4,7 @@
 %table
   %tr
     %th The URL
-    %th Temp Owner
-    %th Perm Owner
+    %th Owner
     %th Tag1
     %th Tag2
     %th Tag3
@@ -21,8 +20,7 @@
           %a(href='#{mrk.uurl}' target='u') #{mrk.uurl}
         - else
           mrk.uurl
-      %td= mrk.usr_id
-      %td= mrk.user_id
+      %td= mrk.owner_h[:name_or_email]
       %td= mrk.tag1
       %td= mrk.tag2
       %td= mrk.tag3
