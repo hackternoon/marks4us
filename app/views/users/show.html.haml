@@ -1,10 +1,17 @@
-%legend= @user.email
+
+%legend
+  Account:
+  %span.bold.dark_green= @user.email
 This is a 
 %a(href="/#account_types") Permanent Account.
 %br/
 %br/
 
-This user created these bookmarks:
-%ul
-  - @user.mrks.each do |mrk|
-    %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
+-if @user.mrks.count < 1
+  This user created no bookmarks (yet).
+-else
+  This user created these bookmarks:
+  %ul
+    - @user.mrks.each do |mrk|
+      %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
+

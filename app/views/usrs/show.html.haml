@@ -1,4 +1,7 @@
-%legend= @usr.name
+
+%legend
+  Account:
+  %span.bold.dark_green= @usr.name
 -if @usr.name == 'Guest'
   This is a 
   %a(href="/#account_types") Guest Account.
@@ -8,7 +11,10 @@
 %br/
 %br/
 
-This user created these bookmarks:
-%ul
-  - @usr.mrks.each do |mrk|
-    %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
+-if @usr.mrks.count < 1
+  This user created no bookmarks (yet).
+-else
+  This user created these bookmarks:
+  %ul
+    - @usr.mrks.each do |mrk|
+      %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
