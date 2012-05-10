@@ -8,6 +8,7 @@ class UsrSessionsController < Devise::SessionsController
     @usr = Usr.find_by_name(params[:user][:email]).try(:authenticate, params[:user][:password])
     if @usr.present?
       session[:usr] = @usr.name
+      session[:usr_id] = @usr.id
       return
     else
       # See if person wants to authenticate a User-object.
@@ -26,6 +27,7 @@ class UsrSessionsController < Devise::SessionsController
   def destroy
     # If the person has a session[:usr], I set it to 'Guest'
     session[:usr] = 'Guest'
+    session[:usr_id] = 1
     # If the person has a current_user object, I'll let Devise destroy the session:
     super if current_user.present?
   end

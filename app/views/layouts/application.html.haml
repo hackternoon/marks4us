@@ -30,8 +30,13 @@
             %br/
             You:
             %br/
-            %a(href="#{sslhost}#{edit_user_password_path('user')}")
-              =truncate(usr_disp[:name_or_email], :length => 15)
+            - case
+            - when current_user.present?
+              %a(href="#{user_path(current_user.id)}") #{current_user.email}
+            - when session[:usr].present?
+              %a(href="#{usr_path(session[:usr_id])}") #{session[:usr]}
+            - else
+              %span.bold.dark_green Guest
           %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
