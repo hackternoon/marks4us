@@ -9,6 +9,7 @@
     %th Tag2
     %th Tag3
     %th Note
+    %th Date
     - if session[:usr] == 'Guest'
       / nada
     - else
@@ -27,6 +28,7 @@
       %td= mrk.tag2
       %td= mrk.tag3
       %td= mrk.note
+      %td= mrk.updated_at.to_s[0..9]
       - if session[:usr] == 'Guest'
         / nada
       - else
