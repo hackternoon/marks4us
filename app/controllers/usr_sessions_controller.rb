@@ -25,10 +25,10 @@ class UsrSessionsController < Devise::SessionsController
   end
 
   def destroy
+    # If the person has a current_user object, I'll let Devise destroy the session:
+    super if current_user.present?
     # If the person has a session[:usr], I set it to 'Guest'
     session[:usr] = 'Guest'
     session[:usr_id] = 1
-    # If the person has a current_user object, I'll let Devise destroy the session:
-    super if current_user.present?
   end
 end

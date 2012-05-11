@@ -9,9 +9,11 @@
     %th Tag2
     %th Tag3
     %th Note
-    %th
-    %th
-    %th
+    - if session[:usr] == 'Guest'
+      / nada
+    - else
+      %th
+      %th
 
   - @mrks.each do |mrk|
     %tr
@@ -25,10 +27,20 @@
       %td= mrk.tag2
       %td= mrk.tag3
       %td= mrk.note
-      %td= link_to 'Show', mrk
-      %td= link_to 'Edit', edit_mrk_path(mrk)
-      %td= link_to 'Destroy', mrk, :confirm => 'Are you sure?', :method => :delete
+      - if session[:usr] == 'Guest'
+        / nada
+      - else
+        %td
+          - if i_own?(mrk)
+            = link_to 'Edit', edit_mrk_path(mrk)
+          - else
+            x
+        %td
+          - if i_own?(mrk)
+            = link_to 'Destroy', mrk, :confirm => 'Are you sure?', :method => :delete
+          - else
+            x
 
 %br
 
-= link_to 'New Mrk', new_mrk_path
+= link_to 'Create New Bookmark!', new_mrk_path

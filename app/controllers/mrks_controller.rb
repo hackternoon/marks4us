@@ -1,7 +1,10 @@
 class MrksController < ApplicationController
+  # I want to use i_own?(object) in ApplicationHelper:
+  include ApplicationHelper
+
   # GET /mrks
   def index
-    @mrks = Mrk.all
+    @mrks = Mrk.order("created_at DESC")
   end
 
   # GET /mrks/1
@@ -55,7 +58,12 @@ class MrksController < ApplicationController
   # DELETE /mrks/1
   def destroy
     @mrk = Mrk.find(params[:id])
-    @mrk.destroy
+    if i_own?(@mrk)
+      @mrk.destroy 
+      flash[:notice] = 'You deleted a Bookmark'
+    else
+      flash[:notice] = 'You tried to delete a Bookmark but it still exists.  It is not your fault.'
+    end
     redirect_to mrks_url
   end
 end
