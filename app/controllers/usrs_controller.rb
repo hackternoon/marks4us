@@ -1,4 +1,36 @@
 class UsrsController < ApplicationController
+
+  # GET /usrs/change_password
+  def get_change_password
+    # Display a change password form
+  end
+
+  # PUT /usrs/put_change_password
+  def put_change_password
+    @usr = Usr.find(session[:usr_id])
+    # authenticate here
+    @usr = @usr.try(:authenticate, params[:current_password])
+    if @usr.blank?
+      flash[:alert] = 'Password remains unchanged. It is not your fault. Maybe try again?'
+      # Give the person another chance:
+      render :get_change_password
+      return
+    end
+    # change password here
+    @usr.password = params[:password]
+    @usr.password_confirmation = params[:password_confirmation]
+    # Some of Rails has_secure_password magic happens inside of @usr.save:
+    if @usr.save.present?
+      flash[:notice] = 'Password Changed. Have a nice day.'
+      render :show 
+      return
+    else
+      flash[:alert] = 'Password remains unchanged. It is not your fault. Maybe try again?'
+      render :get_change_password
+      return
+    end
+  end # def put_change_password
+
   # GET /usrs
   def index
     @usrs = Usr.all

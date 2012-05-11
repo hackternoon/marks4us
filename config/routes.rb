@@ -1,22 +1,24 @@
 J4::Application.routes.draw do
 
-  get "users/index"
+  get 'users/index'
 
-  match "users/show/:user_id" => 'users#show', :as => :user, :via => :get
+  match 'users/show/:user_id' => 'users#show', :as => :user, :via => :get
 
   resources :mrks
 
+  get 'usrs/get_change_password', :to => 'usrs#get_change_password', :as => 'get_usr_change_password'
+  put 'usrs/put_change_password', :to => 'usrs#put_change_password', :as => 'put_usr_change_password'
   resources :usrs
 
   devise_for :users, :skip => [:sessions]
   devise_scope :user do
-    get "users/sign_in", :to => "usr_sessions#new", :as => 'new_user_session'
-    post "users/sign_in", :to => "usr_sessions#create", :as => 'user_session'
-    get "users/sign_out", :to => "usr_sessions#destroy", :as => 'destroy_user_session'
+    get 'users/sign_in', :to => 'usr_sessions#new', :as => 'new_user_session'
+    post 'users/sign_in', :to => 'usr_sessions#create', :as => 'user_session'
+    get 'users/sign_out', :to => 'usr_sessions#destroy', :as => 'destroy_user_session'
   end
 
-  get "home/index"
-  root :to => "home#index"
+  get 'home/index'
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

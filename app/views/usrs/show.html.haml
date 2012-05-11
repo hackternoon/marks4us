@@ -2,6 +2,11 @@
   %h1
     Account:
     %span.bold.dark_green= @usr.name
+
+-if(session[:usr_id] == @usr.id)
+  %a(href="#{sslhost}#{get_usr_change_password_path}") Change Your Password?
+  %br/
+  %br/
 -if @usr.name == 'Guest'
   This is a 
   %a(href="/#account_types") Guest Account.
