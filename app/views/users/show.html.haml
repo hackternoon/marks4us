@@ -2,6 +2,11 @@
   %h1
     Account:
     %span.bold.dark_green= @user.email
+- if current_user.id == @user.id
+  %a(href="#{sslhost}#{edit_user_registration_path}")
+    Change Your Password?
+  %br/
+  %br/
 This is a 
 %a(href="/#account_types") Permanent Account.
 %br/
