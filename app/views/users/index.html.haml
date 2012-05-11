@@ -1,2 +1,15 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+%legend
+  %h1
+    Permanent Accounts
+
+%table
+  %tr
+    %th E-Mail
+    %th Number of Bookmarks
+
+  - @users.each do |user|
+    %tr
+      %td
+        %a(href='#{get_user_show_path(user.id)}')=user.email
+      %td=user.mrks.count
+

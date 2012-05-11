@@ -16,7 +16,42 @@ This is a
   This user created no bookmarks (yet).
 -else
   This user created these bookmarks:
-  %ul
-    - @user.mrks.each do |mrk|
-      %li=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
 
+  %table
+    %tr
+      %th The URL
+      %th Tag1
+      %th Tag2
+      %th Tag3
+      %th Note
+      %th Date
+      - if session[:usr] == 'Guest'
+        / nada
+      - else
+        %th
+        %th
+    - @user.mrks.each do |mrk|
+      %tr
+        %td=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
+        %td= mrk.tag1
+        %td= mrk.tag2
+        %td= mrk.tag3
+        %td= mrk.note
+        %td= mrk.updated_at.to_s[0..9]
+        - if session[:usr] == 'Guest'
+          / nada
+        - else
+          %td
+            - if i_own?(mrk)
+              = link_to 'Edit', edit_mrk_path(mrk)
+            - else
+              / x
+          %td
+            - if i_own?(mrk)
+              = link_to 'Destroy', mrk, :confirm => 'Are you sure?', :method => :delete
+            - else
+              / x
+
+%br
+- if current_user.id == @user.id
+  = link_to 'Create New Bookmark!', new_mrk_path
