@@ -6,6 +6,7 @@ J4::Application.routes.draw do
 
   resources :mrks
 
+  get 'usrs/get_guest', :to => 'usrs#get_guest', :as => 'get_usr_guest'
   get 'usrs/get_change_password', :to => 'usrs#get_change_password', :as => 'get_usr_change_password'
   put 'usrs/put_change_password', :to => 'usrs#put_change_password', :as => 'put_usr_change_password'
   resources :usrs

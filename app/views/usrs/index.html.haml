@@ -1,1 +1,16 @@
-%h1 Nothing to see here. Move along.
+%legend
+  %h1
+    2 Month Accounts
+
+%table
+  %tr
+    %th Name
+    %th Number of Bookmarks
+
+  - @usrs.each do |usr|
+    %tr
+      %td
+        %a(href='#{usr_path(usr.id)}')=usr.name
+      %td=usr.mrks.count
+
+
