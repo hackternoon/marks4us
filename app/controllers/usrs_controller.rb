@@ -34,7 +34,7 @@ class UsrsController < ApplicationController
   # GET /usrs
   def index
     # I want all usrs except Guest:
-    @usrs = Usr.where("id > 1")
+    @usrs = Usr.where("id > 1").order(:name).page params[:page]
   end
 
   # GET /usrs/get_guest

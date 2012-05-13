@@ -33,6 +33,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    @guest = FactoryGirl.create(:usr, :name => 'Guest')
   end
 
   config.after(:each) do
