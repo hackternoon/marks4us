@@ -1,7 +1,5 @@
 
-- if ENV['RAILS_ENV'] == 'production'
-  / nada
-- else
+- if ENV['RAILS_ENV'] == 'development'
   %ul
     - User.where("confirmation_token IS NOT NULL").each do |user|
       %li
