@@ -13,3 +13,4 @@
         %a(href='#{get_user_show_path(user.id)}')=user.email
       %td=user.mrks.count
 
+= paginate @users

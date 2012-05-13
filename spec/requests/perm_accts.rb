@@ -14,6 +14,14 @@ describe "Permanent Accounts Page" do
       (10..99).each{|n| FactoryGirl.create(:user,:email=>"dan#{n}@bot4.us")}
       visit get_users_index_path
       page.should have_content 'dan10@bot4.us'
+      click_link "Last"
+      page.should have_content 'dan99@bot4.us'
+      click_link "First"
+      page.should have_content 'dan10@bot4.us'
+      click_link "Next"
+      page.should have_content 'dan36@bot4.us'
+      click_link "Prev"
+      page.should have_content 'dan10@bot4.us'
     end
 
   end
