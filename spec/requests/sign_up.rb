@@ -22,6 +22,7 @@ describe "Sign Up Page" do
       @dan = User.find_by_email 'dan@bot4.us'
       visit "/users/confirmation?confirmation_token=#{@dan.confirmation_token}"
       page.should have_content "Your account was successfully confirmed"
+      @dan_confirmed = User.find_by_email 'dan@bot4.us'
       click_link "marks4.us"
       click_link "Sign Out"
       page.should have_content "Signed out successfully"
