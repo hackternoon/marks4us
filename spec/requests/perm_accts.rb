@@ -6,7 +6,7 @@ describe "Permanent Accounts Page" do
       "/users/index".should == get_users_index_path
       get get_users_index_path
       response.status.should be(200)
-      @dan == FactoryGirl.create(:user, :email => 'dan@bot4.us')
+      @dan = FactoryGirl.create(:user, :email => 'dan@bot4.us')
       visit get_users_index_path
       page.should have_content "E-Mail"
       page.should have_content "Number of Bookmarks"
