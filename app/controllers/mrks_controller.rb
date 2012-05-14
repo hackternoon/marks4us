@@ -4,7 +4,7 @@ class MrksController < ApplicationController
 
   # GET /mrks
   def index
-    @mrks = Mrk.order("created_at DESC")
+    @mrks = Mrk.order("created_at DESC").page params[:page]
   end
 
   # GET /mrks/1

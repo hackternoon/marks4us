@@ -14,6 +14,7 @@ describe "Temp 2 Month Accounts Page" do
       (10..99).each{|n| FactoryGirl.create(:usr,:name=>"dan#{n}")}
       visit usrs_path
       page.should have_content 'dan10'
+      # Test Kaminari
       click_link "Last"
       page.should have_content 'dan99'
       click_link "First"
