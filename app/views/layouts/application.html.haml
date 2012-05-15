@@ -39,6 +39,8 @@
               %span.bold.dark_green Guest
           %hr/
           %nav.bold.black_border.padding10.float_left.margin10.blocks_others
+            %a(href="#{sslhost}#{new_mrk_path}") Create New Bookmark!
+            %hr/
             %a(href="#{sslhost}#{new_session_path('user')}") Sign In
             %a(href="#{sslhost}#{new_registration_path('user')}") Sign Up
             %a(href="#{sslhost}#{destroy_user_session_path}") Sign Out

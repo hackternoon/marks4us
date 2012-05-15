@@ -1,14 +1,17 @@
-%p#notice= notice
-
+%legend
+  %h1 A Bookmark
 %p
-  %b Uurl:
+  %b URL:
   = @mrk.uurl
-%p
-  %b Usr:
-  = @mrk.usr_id
-%p
-  %b User:
-  = @mrk.user_id
+- case
+- when @mrk.usr.present?
+  %p
+    %b Usr:
+    = @mrk.usr.name
+- when @mrk.user.present?
+  %p
+    %b User:
+    = @mrk.user.email
 %p
   %b Tag1:
   = @mrk.tag1
@@ -21,7 +24,3 @@
 %p
   %b Note:
   = @mrk.note
-
-= link_to 'Edit', edit_mrk_path(@mrk)
-\|
-= link_to 'Back', mrks_path
