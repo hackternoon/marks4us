@@ -10,6 +10,12 @@ describe "Home Page" do
       response.status.should be(200)
       visit root_path
       page.should have_content "Welcome"
+      page.should have_link "Contact"
+      click_link "Contact"
+      page.should have_content "Contact"
+      page.should have_content "dan@bot4.us"
+      page.should have_link "marks4.us"
+      click_link "marks4.us"
       page.should have_link "About"
       click_link "About"
       page.should have_content "About"
