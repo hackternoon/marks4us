@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Home Page" do
-  describe "GET /", :js => false do
+  describe "GET /", :js => true do
     it "Show me the home page" do
       # Demo/Test that FactoryGirl works:
       @unconfirmed_user = FactoryGirl.create(:user)
@@ -10,6 +10,10 @@ describe "Home Page" do
       response.status.should be(200)
       visit root_path
       page.should have_content "Welcome"
+      page.should have_link "About"
+      click_link "About"
+      page.should have_content "About"
+      page.should have_content "marks4.us was created by Dan Bikle during Sunday Hackternoon"
       page.should have_link "marks4.us"
       click_link "marks4.us"
       page.should have_link "marks4.us"

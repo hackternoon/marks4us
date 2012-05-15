@@ -1,5 +1,7 @@
 J4::Application.routes.draw do
 
+  get 'about', :to => 'home#about', :as => :get_about
+
   get 'users/index', :to => 'users#index', :as => :get_users_index
 
   match 'users/show/:user_id' => 'users#show', :as => :get_user_show, :via => :get
