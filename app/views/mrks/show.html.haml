@@ -2,16 +2,14 @@
   %h1 A Bookmark
 %p
   %b URL:
-  = @mrk.uurl
-- case
-- when @mrk.usr.present?
-  %p
-    %b Usr:
-    = @mrk.usr.name
-- when @mrk.user.present?
-  %p
-    %b User:
-    = @mrk.user.email
+  = render :partial => "shared/mrk_uurl", :locals => {:mrk => @mrk}
+%p
+  %b Owner of this Bookmark:
+  - if @mrk.owner_h[:owner_type] == :user
+    %a(href='#{get_user_show_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
+  - else
+    %a(href='#{usr_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
+
 %p
   %b Tag1:
   = @mrk.tag1
