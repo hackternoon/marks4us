@@ -29,7 +29,6 @@ describe "Mrks" do
       fill_in('mrk_tag3', :with => 'Rails Demo')
       fill_in('mrk_note', :with => 'This MVP bookmark site sprung from a "project" listed on hackternoon.com and built during meetup.com/Hackternoon')
       click_button 'Save'
-debugger
       page.should have_content 'mark'
     end
   end
