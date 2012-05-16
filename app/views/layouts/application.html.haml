@@ -53,6 +53,14 @@
             %hr/
             %a(href="#{sslhost}#{get_usr_guest_path}") Guest Account
             %hr/
+            Google Search This Site:
+
+            %form(action="https://www.google.com/" target="o")
+              %input(type="text" name="as_sitesearch" value="m41.herokuapp.com" size="13")
+              %input(type="text" name="q" size="13")
+              %input(type="submit" value="Search")
+
+            %hr/
             %a(href="#{sslhost}#{get_about_path}") About
             %hr/
             %a(href="#{sslhost}#{get_contact_path}") Contact

@@ -10,6 +10,7 @@ describe "Home Page" do
       response.status.should be(200)
       visit root_path
       page.should have_content "Welcome"
+      page.should have_content "Google Search This Site"
       page.should have_link "Contact"
       click_link "Contact"
       page.should have_content "Contact"
