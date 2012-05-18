@@ -33,7 +33,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
-    @guest = FactoryGirl.create(:usr, :name => 'Guest')
+    @guest = FactoryGirl.create(:usr, :name => 'Guest') if Usr.find_by_name('Guest').blank?
   end
 
   config.after(:each) do
