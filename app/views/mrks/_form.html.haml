@@ -7,9 +7,13 @@
           %li= msg
 
   .field
-    Url
+    URL (http, https, ftp)
     %br/
-    = f.url_field :uurl, {:value => 'http://'}
+    - if @mrk.uurl.blank?
+      = f.url_field :uurl, {:value => 'http://',:size => 79}
+    - else
+      = f.url_field :uurl, {:size => 79}
+
   .field
     Tag1
     %br/
@@ -25,6 +29,6 @@
   .field
     Any notes about this Bookmark?
     %br/
-    = f.text_area :note, :rows => 6
+    = f.text_area :note, :rows => 6, :cols => 79
   .actions
     = f.submit 'Save'
