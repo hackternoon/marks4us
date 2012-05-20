@@ -10,7 +10,7 @@
         %span.bold.gray7 Owner:
         - if mrk.owner_h[:owner_type] == :user
           %a(href='#{get_user_show_path(mrk.owner_h[:owner_id])}')=mrk.owner_h[:name_or_email]
-          - if mrk.user.id == current_user.id
+          - if(current_user.present? and mrk.user.present? and mrk.user.id == current_user.id)
             %span.bold.red8 -> Me!
         - else
           %a(href='#{usr_path(mrk.owner_h[:owner_id])}')=mrk.owner_h[:name_or_email]

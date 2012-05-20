@@ -44,7 +44,6 @@ describe "Home Page" do
       click_link "marks4.us"
       click_link "Bookmarks!"
       page.should have_content "Bookmarks!"
-      page.should have_content "The URL"
       page.should have_link "Create New Bookmark!"
       click_link "marks4.us"
       click_link "Permanent"
