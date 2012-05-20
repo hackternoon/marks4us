@@ -1,5 +1,6 @@
 J4::Application.routes.draw do
 
+  match 'get_tag_mrks/:tag', :to => 'mrks#get_tag_mrks', :as => :get_tag_mrks, :via => :get
   get 'contact', :to => 'home#contact', :as => :get_contact
   get 'about', :to => 'home#about', :as => :get_about
   get 'users/index', :to => 'users#index', :as => :get_users_index

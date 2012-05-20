@@ -2,7 +2,7 @@ class Mrk < ActiveRecord::Base
   # Associations before white-list:
   belongs_to :usr
   belongs_to :user
-  attr_accessible :note, :tag1, :tag2, :tag3, :uurl
+  attr_accessible :note, :tag1, :tag2, :tag3, :uurl, :tag
   # Callbacks after Associations
   before_save :check_owner,:check_url_scheme
 

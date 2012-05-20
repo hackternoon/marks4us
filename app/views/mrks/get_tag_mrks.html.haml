@@ -1,0 +1,9 @@
+%legend
+  %h1
+    - if params[:tag].present?
+      Bookmarks for the Tag:
+      %span.bold.dark_green=params[:tag]
+    - else
+      Some Bookmarks
+
+= render 'shared/table4mrks'
