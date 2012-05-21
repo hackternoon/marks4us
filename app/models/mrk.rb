@@ -4,7 +4,7 @@ class Mrk < ActiveRecord::Base
   belongs_to :user
   attr_accessible :note, :tag1, :tag2, :tag3, :uurl, :tag
   # Callbacks after Associations
-  before_save :check_owner,:check_url_scheme,:uri_escape
+  before_save :check_owner,:check_url_scheme,:uri_escape,:filter_big_strings
 
   # A mrk can be owned by a user or a usr.
   # I look for both and return one.
@@ -47,4 +47,12 @@ class Mrk < ActiveRecord::Base
     self.tag3 = URI.escape(self.tag3.gsub(/ +/,'+').gsub(/\/+/,'_')) if self.tag3.present?
   end
 
+  # I want to filter out big strings
+  def filter_big_strings
+    self.uurl = self.uurl.truncate(200) if self.uurl.present?
+    self.tag1 = self.tag1.truncate(80) if self.tag1.present?
+    self.tag2 = self.tag2.truncate(80) if self.tag2.present?
+    self.tag3 = self.tag3.truncate(80) if self.tag3.present?
+    self.note = self.note.truncate(900) if self.note.present?
+  end # def filter_big_strings
 end
