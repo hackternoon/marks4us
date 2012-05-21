@@ -11,8 +11,6 @@ describe "user show" do
       visit root_path
       click_link "dan@bot4.us"
       page.should have_content "This is m1"
-debugger
-      page.should have_content "This is m1"
 
     end # it
   end # describe

@@ -46,7 +46,13 @@ class UsrsController < ApplicationController
   # GET /usrs/1
   def show
     @usr = Usr.find(params[:id])
-  end
+    if @usr.mrks.blank?
+      @mrks = nil
+    else
+      @mrks = @usr.mrks.page params[:page]
+    end # if
+  end # def show
+
 
   # GET /usrs/new
   def new

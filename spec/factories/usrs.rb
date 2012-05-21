@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :usr do
-    name "MyString"
-    password_digest "MyString"
+    name "dan"
+    password "abc123"
+    password_confirmation "abc123"
   end
 end
