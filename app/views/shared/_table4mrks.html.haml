@@ -14,14 +14,17 @@
         %br/
 
         - if mrk.tag1.present?
+          %a(href="http://www.google.com/search?q=#{mrk.tag1}" target="g") Goog-This->
           %span.bold.gray7 Tag1:
           %a(href="#{get_tag_mrks_path(mrk.tag1)}")= mrk.tag1
           %br/
         - if mrk.tag2.present?
+          %a(href="http://www.google.com/search?q=#{mrk.tag2}" target="g") Goog-This->
           %span.bold.gray7 Tag2:
           %a(href="#{get_tag_mrks_path(mrk.tag2)}")= mrk.tag2
           %br/
         - if mrk.tag3.present?
+          %a(href="http://www.google.com/search?q=#{mrk.tag3}" target="g") Goog-This->
           %span.bold.gray7 Tag3:
           %a(href="#{get_tag_mrks_path(mrk.tag3)}")= mrk.tag3
           %br/

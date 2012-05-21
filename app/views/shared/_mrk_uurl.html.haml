@@ -1,4 +1,5 @@
 
+%a(href="http://www.google.com/search?q=#{mrk.uurl}" target="g") Goog-This->
 - if(URI.parse(mrk.uurl).scheme.present?)
   %a(href='#{mrk.uurl}' target='u') #{mrk.uurl}
 - else
