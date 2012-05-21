@@ -14,8 +14,8 @@ describe "Tag Link" do
       m7 = FactoryGirl.create(:mrk, :user_id => @dan.id, :usr_id => nil,:tag3 => 'rails////hello',:note => 'This is m7')
       visit get_tag_mrks_path('rails')
       page.should have_content "Bookmarks for the Tag: rails"
-      click_link "bookmark_site"
-      page.should have_content "Bookmarks for the Tag: bookmark_site"
+      click_link "bookmark+site"
+      page.should have_content "Bookmarks for the Tag: bookmark+site"
       click_link "Bookmarks!"
       page.should have_content "rails_hello"
       click_link "rails_hello"

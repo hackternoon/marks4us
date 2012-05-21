@@ -42,9 +42,9 @@ class Mrk < ActiveRecord::Base
 
   # I want to URI-escape tags because they can later appear in Request-parameters
   def uri_escape
-    self.tag1 = URI.escape(self.tag1.gsub(/ +/,'_').gsub(/\/+/,'_')) if self.tag1.present?
-    self.tag2 = URI.escape(self.tag2.gsub(/ +/,'_').gsub(/\/+/,'_')) if self.tag2.present?
-    self.tag3 = URI.escape(self.tag3.gsub(/ +/,'_').gsub(/\/+/,'_')) if self.tag3.present?
+    self.tag1 = URI.escape(self.tag1.gsub(/ +/,'+').gsub(/\/+/,'_')) if self.tag1.present?
+    self.tag2 = URI.escape(self.tag2.gsub(/ +/,'+').gsub(/\/+/,'_')) if self.tag2.present?
+    self.tag3 = URI.escape(self.tag3.gsub(/ +/,'+').gsub(/\/+/,'_')) if self.tag3.present?
   end
 
 end
