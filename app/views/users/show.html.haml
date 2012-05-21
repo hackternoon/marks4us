@@ -2,7 +2,7 @@
   %h1
     Account:
     %span.bold.dark_green= @user.email
-- if current_user.id == @user.id
+- if(current_user.present? and current_user.id == @user.id)
   %a(href="#{sslhost}#{edit_user_registration_path}")
     Change Your Password?
   %br/
@@ -17,4 +17,6 @@ This is a
 -else
   This user created these bookmarks:
   %br/
+  %br/
+  %hr/
   =render 'shared/table4mrks'

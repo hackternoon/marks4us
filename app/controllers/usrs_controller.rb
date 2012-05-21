@@ -41,6 +41,11 @@ class UsrsController < ApplicationController
   def get_guest
     # I want only Guest usr:
     @usr = Usr.find 1
+    if @usr.mrks.blank?
+      @mrks = nil
+    else
+      @mrks = @usr.mrks.page params[:page]
+    end # if
   end
 
   # GET /usrs/1

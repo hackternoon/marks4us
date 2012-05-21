@@ -12,20 +12,7 @@ This is a
   This user created no bookmarks (yet).
 -else
   This user created these bookmarks:
-  %table
-    %tr
-      %th The URL
-      %th Tag1
-      %th Tag2
-      %th Tag3
-      %th Note
-      %th Date
-    - @usr.mrks.each do |mrk|
-      %tr
-        %td=render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
-        %td= mrk.tag1
-        %td= mrk.tag2
-        %td= mrk.tag3
-        %td= mrk.note
-        %td= mrk.updated_at.to_s[0..9]
-
+  %br/
+  %br/
+  %hr/
+  =render 'shared/table4mrks'

@@ -15,8 +15,6 @@ describe "usr show" do
       page.should have_content "You are now signed in"
       click_link "dan"
       page.should have_content "This is m1"
-debugger
-      page.should have_content "This is m1"
 
     end # it
   end # describe
