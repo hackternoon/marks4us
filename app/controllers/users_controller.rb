@@ -7,6 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.select("id,email").find params[:user_id]
-    # Do this in the view: @mrks = @user.mrks
+    @mrks = @user.mrks.page params[:page]
   end
 end

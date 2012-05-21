@@ -2,7 +2,7 @@ class MrksController < ApplicationController
   # I want to use i_own?(object) in ApplicationHelper:
   include ApplicationHelper
 
-  # GET /get_tag_mrks?tag=rails
+  # GET /get_tag_mrks/rails
   def get_tag_mrks
     # Put a query here which gets me all mrks where tag is some_string,
     # start with tag1 and then add OR-logic for tag2, tag3.

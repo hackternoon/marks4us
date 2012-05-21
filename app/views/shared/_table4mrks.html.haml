@@ -2,6 +2,8 @@
   - @mrks.each do |mrk|
     %tr
       %td
+        %a(href="http://www.google.com/search?q=#{mrk.uurl}" target="g") Goog-This->
+        %span.bold.gray7 URL:
         =render :partial => "shared/mrk_uurl", :locals => {:mrk => mrk}
         %br/
         %span.bold.gray7 Owner:
@@ -12,7 +14,6 @@
         - else
           %a(href='#{usr_path(mrk.owner_h[:owner_id])}')=mrk.owner_h[:name_or_email]
         %br/
-
         - if mrk.tag1.present?
           %a(href="http://www.google.com/search?q=#{mrk.tag1}" target="g") Goog-This->
           %span.bold.gray7 Tag1:
@@ -37,7 +38,6 @@
             %br/
             = link_to 'Edit', edit_mrk_path(mrk)
             %span.bold.gray7 This Bookmark
-
         - if mrk.note.present?
           %br/
           %span.bold.gray7 Bookmark Notes:
