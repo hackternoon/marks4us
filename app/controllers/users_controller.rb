@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.mrks.blank?
       @mrks = nil
     else
-      @mrks = @user.mrks.page params[:page]
+      @mrks = @user.mrks.order("created_at DESC").page params[:page]
     end # if
   end # def show
 end

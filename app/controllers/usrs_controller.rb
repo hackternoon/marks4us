@@ -41,23 +41,14 @@ class UsrsController < ApplicationController
   def get_guest
     # I want only Guest usr:
     @usr = Usr.find 1
-    if @usr.mrks.blank?
-      @mrks = nil
-    else
-      @mrks = @usr.mrks.page params[:page]
-    end # if
+    get_mrks
   end
 
   # GET /usrs/1
   def show
     @usr = Usr.find(params[:id])
-    if @usr.mrks.blank?
-      @mrks = nil
-    else
-      @mrks = @usr.mrks.page params[:page]
-    end # if
-  end # def show
-
+    get_mrks
+  end
 
   # GET /usrs/new
   def new
@@ -98,4 +89,15 @@ class UsrsController < ApplicationController
     @usr.destroy
     redirect_to usrs_url
   end
+
+  private
+
+  def get_mrks
+    if @usr.mrks.blank?
+      @mrks = nil
+    else
+      @mrks = @usr.mrks.order("created_at DESC").page params[:page]
+    end # if
+  end # def get_marks
+
 end
