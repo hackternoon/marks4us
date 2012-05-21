@@ -17,7 +17,6 @@ describe "Mrks show edit" do
       page.should have_content 'A Bookmark'
       click_link 'Edit This Bookmark'
       page.should have_content 'Edit This Bookmark'
-debugger
       page.should have_link 'DELETE This Bookmark'
 
     end
