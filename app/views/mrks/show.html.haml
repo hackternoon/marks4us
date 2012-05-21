@@ -1,24 +1,49 @@
 %legend
   %h1 A Bookmark
-%p
-  %b URL:
-  = render :partial => "shared/mrk_uurl", :locals => {:mrk => @mrk}
-%p
-  %b Owner of this Bookmark:
-  - if @mrk.owner_h[:owner_type] == :user
-    %a(href='#{get_user_show_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
-  - else
-    %a(href='#{usr_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
 
-%p
-  %b Tag1:
-  = @mrk.tag1
-%p
-  %b Tag2:
-  = @mrk.tag2
-%p
-  %b Tag3:
-  = @mrk.tag3
-%p
-  %b Note:
-  = @mrk.note
+%a(href="http://www.google.com/search?q=#{@mrk.uurl}" target="g") Goog-This->
+%span.bold.gray7 URL:
+= render :partial => "shared/mrk_uurl", :locals => {:mrk => @mrk}
+
+%br/
+%br/
+
+%span.bold.gray7 Owner of this Bookmark:
+- if @mrk.owner_h[:owner_type] == :user
+  %a(href='#{get_user_show_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
+- else
+  %a(href='#{usr_path(@mrk.owner_h[:owner_id])}')=@mrk.owner_h[:name_or_email]
+%br/
+%br/
+
+
+- if @mrk.tag1.present?
+  %a(href="http://www.google.com/search?q=#{@mrk.tag1}" target="g") Goog-This->
+  %span.bold.gray7 Tag1:
+  %a(href="#{get_tag_mrks_path(@mrk.tag1)}")= @mrk.tag1
+  %br/
+
+- if @mrk.tag2.present?
+  %a(href="http://www.google.com/search?q=#{@mrk.tag2}" target="g") Goog-This->
+  %span.bold.gray7 Tag2:
+  %a(href="#{get_tag_mrks_path(@mrk.tag2)}")= @mrk.tag2
+  %br/
+
+- if @mrk.tag3.present?
+  %a(href="http://www.google.com/search?q=#{@mrk.tag3}" target="g") Goog-This->
+  %span.bold.gray7 Tag3:
+  %a(href="#{get_tag_mrks_path(@mrk.tag3)}")= @mrk.tag3
+  %br/
+  
+%span.bold.gray7 Note:
+= @mrk.note
+
+%br/
+%br/
+
+- if session[:usr] == 'Guest'
+  / nada
+- else
+  - if i_own?(@mrk)
+    %br/
+    = link_to 'Edit This Bookmark', edit_mrk_path(@mrk)
