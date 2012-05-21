@@ -2,4 +2,4 @@
   %h1 Edit This Bookmark
 
 = render 'form'
-
+= link_to 'DELETE This Bookmark', @mrk, :confirm => 'Are you sure?', :method => :delete
